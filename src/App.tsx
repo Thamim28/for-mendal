@@ -153,8 +153,8 @@ function App() {
             setIsPlaying(true);
             audio.muted = false;
           })
-          .catch(error => {
-            console.log("Autoplay prevented:", error);
+          .catch(() => {
+            // Silently fail if autoplay is prevented
             setIsPlaying(false);
           });
       }
@@ -204,7 +204,7 @@ function App() {
   return (
     <div className="relative overflow-x-hidden bg-valentine-pink">
       {/* Background Music */}
-      <audio ref={audioRef} loop preload="auto" autoPlay
+      <audio ref={audioRef} loop preload="auto"
         src={bgMusic} />
 
       {/* Grain Overlay */}
