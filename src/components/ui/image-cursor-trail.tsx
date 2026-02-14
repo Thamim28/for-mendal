@@ -1,6 +1,6 @@
 "use client"
 
-import React, { createRef, useRef, type ReactNode } from "react"
+import { createRef, useRef, type ReactNode, type MouseEvent } from "react"
 
 function cn(...classes: (string | undefined | null | false)[]) {
   return classes.filter(Boolean).join(" ")
@@ -62,7 +62,7 @@ export function ImageCursorTrail({
     image.dataset.status = "inactive"
   }
 
-  const handleOnMove = (e: MouseEvent | Touch) => {
+  const handleOnMove = (e: MouseEvent | Touch | any) => {
     if (distanceFromLast(e.clientX, e.clientY) > window.innerWidth / distance) {
       const lead = refs.current[globalIndex % refs.current.length].current
       const tail =
